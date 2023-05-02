@@ -1,0 +1,31 @@
+package yang;
+syntax = "proto3";
+
+message MatchPlayInfo {
+	int32 gameType = 1; // game_type或者gameType的写法都可以
+	int32 mapId = 2;
+	int32 mapSeed = 3;
+	repeated MatchStepInfo stepInfoList = 4;
+}
+
+message MatchStepInfo {
+	int32 chessIndex = 1;
+	int32 timeTag = 2;
+	int32 deltaTime = 3;
+}
+
+message InviteJoin {
+	string inviteUid = 1;
+}
+
+message AwardState {
+	int32 condition = 1;
+	int32 state = 2;
+}
+
+message InviteInfo {
+	string inviteUid = 1;
+	repeated string joinedUserIcons = 2;
+	repeated AwardState awardInfo = 3;
+	int64 expiring = 4;
+}
