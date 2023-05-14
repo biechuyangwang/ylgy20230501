@@ -128,7 +128,7 @@ function prompt(userPrompt) {
 }
 
 const main = async() => {
-    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzg3MjkyNTgsInVpZCI6MTIyOTQ2NjU4LCJ2ZXIiOiIxIiwiZXh0IjoiMzYzMzMyNjMzMzY0MzgzODMxNjMzNjM5MzIzMjM1MzczOTMxNjQ2MzM4MzQzOTY2IiwiY29kZSI6ImYzYWQ2MDdjYzJlY2IwMWY3YzgwYWEwMjU5MGE3MjE5IiwiZW5kIjoxNjc4NzI5MjU4NDY5LCJwbGEiOjF9.LN-zkdvTwqDc8avSnS5OGqzgr7y8VSKvRUXEIZL9PSk";
+    let token = "";
     token = await prompt("请输入token: ");
     let inviteUid = "";
 
@@ -149,7 +149,7 @@ const main = async() => {
     }
 };
 var tokens = {
-    "流金岁月-14": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzg3NTM4ODAsInVpZCI6MTIyOTQ2NjU4LCJ2ZXIiOiIxIiwiZXh0IjoiMzYzNDMwMzkzMjM2MzczNTYyNjM2MzY0NjE2MjYzMzQ2MTM4MzYzOTM1NjEzMzMzIiwiY29kZSI6ImEyZjM4MzdiYTJmOTdjY2I2NTJkNjNkZWM2Nzg4ZDQzIiwiZW5kIjoxNjc4NzUzODgwMzY4LCJwbGEiOjF9.X-CpW8RgOlx-kJE9Caq_dAfGojDgPvbvrUpguQahXvk",
+    "name1": "token1",
     "name2": "token2"
 }
 main();

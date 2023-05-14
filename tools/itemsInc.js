@@ -87,7 +87,7 @@ function prompt(userPrompt) {
 
 const main = async () => {
   let res = "";
-    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzkxMzIxNTksInVpZCI6MTIyOTQ2NjU4LCJ2ZXIiOiIxIiwiZXh0IjoiMzYzMzMyNjMzMzY0MzgzODMxNjMzNjM5MzIzMjM1MzczOTMxNjQ2MzM4MzQzOTY2IiwiY29kZSI6ImU1NDQyZjNmYzcyYzEyZTZlOTdmZWVjMmZhYTY4MmUwIiwiZW5kIjoxNjc5MTMyMTU5MTIzLCJwbGEiOjF9.4CsHx4QAyAIPLkAlziba2pXd5q6SDxb-ccjxgKmkKEE";
+    let token = "token";
     token = await prompt("请输入token: ");
     res = await get_item_list(token);
     if(res.err_code==0)

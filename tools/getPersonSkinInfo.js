@@ -5,7 +5,7 @@ const readline = require("readline");
 
 // 直接运行 node getPersonSkinInfo.js即可 后续会要求你在命令行输入t值查询
 var args = process.argv.splice(2); // 服务器上要删掉
-var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2Nzc5NDYxNzksInVpZCI6MTIyOTQ2NjU4LCJ2ZXIiOiIxIiwiZXh0IjoiMzYzMzMyNjMzMzY0MzgzODMxNjMzNjM5MzIzMjM1MzczOTMxNjQ2MzM4MzQzOTY2IiwiY29kZSI6IjQ5ZDdlNjE0MzZlOGMxMWMyZDU4YjY0OGU1ODY3Mzc0IiwiZW5kIjoxNjc3OTQ2MTc5MTkxLCJwbGEiOjF9.gp5vvWAwiKISYi4BD35hIX_BjhmZanTIqmjYPMLHOMU";
+var token = "";
 token = args[0]; // 服务器上要删掉
 var total_skin_num = getSkinTotalNum();
 var all_topic_skin_list = [];
