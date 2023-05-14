@@ -7,9 +7,8 @@ const Miny = 15600;
 const speed_delay = 0.5;
 
 // 修改对应t值和终点坐标（如果是全图打卡不需要修改终点坐标，如果需要单点传送请看第43行注释部分）
-let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzQ2OTYzMzAsInVpZCI6MTIyOTQ2NjU4LCJ2ZXIiOiIxIiwiZXh0IjoiMzYzMzMyNjI2MjMxNjI2NjMyMzczMDM2MzEzMzMwMzM2MTM2NjMzNzM3MzMzMDMxIiwiY29kZSI6ImNhZmQyZjYzZGQ1M2FjOTZjMTQ3Njg1YWVhMWVlMWNkIiwiZW5kIjoxNjc0Njk2MzMwNzg4LCJwbGEiOjN9.vG60M0tTpBNk1yre9wT67UcAzHy4UU7rEOLCkFaojXQ";
+let token = "";
 var wsURL = `wss://cat-match.easygame2021.com/gateway/ws?token=${token}&login_type=0`;
-
 
 const fs = require('fs');
 var position_data = {}
