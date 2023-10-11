@@ -1,4 +1,5 @@
 const axios = require("axios");
+const readline = require("readline");
 
 // 输入node getRewardGift.js 即可 会让填对应平台
 function prompt(userPrompt) {
@@ -22,7 +23,8 @@ async function get_reward_skins(token, plat) {
 
     let config = {
         "method": "post",
-        "url": "https://cat-match.easygame2021.com/sheep/v1/game/skin/reward?",
+        // "url": "https://cat-match.easygame2021.com/sheep/v1/game/skin/reward?",
+        "url": "https://beta-sheep-cloud.easygame2021.com/sheep/v1/game/skin/reward?",
         "headers": {
             "Connection": "keep-alive",
             "t": token,

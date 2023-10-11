@@ -1,12 +1,15 @@
 const axios = require("axios");
 const fs = require("fs");
 
-// 每次只要抓包获取这两个链接即可（地址后五位是版本号会变-可以不抓包，看你自己分析源码找到这个规律） 找import后面是46 62 10 16的四个包
-// 把下面四个替换成最新的 node updateSkins.js就可以得到最新的皮肤文件列表 存放在当前目录的skins_orig.json里
-var gd_language = "https://cat-match-static.easygame2021.com/catMatch/sheep_wx/remote/resources/import/46/46b0c95d-d055-444c-b4ae-936b24d1725e.2a353.json";
-var gd_skin_list = "https://cat-match-static.easygame2021.com/catMatch/sheep_wx/remote/resources/import/62/62e2f78f-fa22-4fee-8294-d16593f17957.c5d80.json";
-var gd_game_topic_list = "https://cat-match-static.easygame2021.com/catMatch/sheep_wx/remote/resources/import/10/10b93ebb-0229-4c5b-b28c-19f37ebe8bb8.37bf8.json";
-var gd_block_topic_slot_data = "https://cat-match-static.easygame2021.com/catMatch/sheep_wx/remote/resources/import/16/16c7f440-2f64-40e1-b7e7-51d257e38e2e.87109.json";
+
+// 使用方法
+// 每次只要抓包获取这两个链接即可（地址后五位是版本号会变-可以不抓包，看你自己分析源码找到这个规律） 46 62 10 16
+// 运行 node update_skin.js
+// 结果会在skin_orig.json文件中
+var gd_language = "https://cat-match-static.easygame2021.com/catMatch/sheep_wx/remote/resources/import/46/46b0c95d-d055-444c-b4ae-936b24d1725e.6fab2.json";
+var gd_skin_list = "https://cat-match-static.easygame2021.com/catMatch/sheep_wx/remote/resources/import/62/62e2f78f-fa22-4fee-8294-d16593f17957.fff52.json";
+var gd_game_topic_list = "https://cat-match-static.easygame2021.com/catMatch/sheep_wx/remote/resources/import/10/10b93ebb-0229-4c5b-b28c-19f37ebe8bb8.7c049.json";
+var gd_block_topic_slot_data = "https://cat-match-static.easygame2021.com/catMatch/sheep_wx/remote/resources/import/16/16c7f440-2f64-40e1-b7e7-51d257e38e2e.52558.json";
 const getJsonFromURL = async(url) => {
     let config = {
         "method": "get",
@@ -31,6 +34,8 @@ const update_skin= async() =>{
     let json_gd_block_topic_slot_data = await getJsonFromURL(gd_block_topic_slot_data);
     // fs.writeFileSync('gd_language.json', JSON.stringify(json_gd_language));
     // fs.writeFileSync('gd_skin_list.json', JSON.stringify(json_gd_skin_list));
+    // fs.writeFileSync('gd_game_topic_list.json', JSON.stringify(json_gd_game_topic_list));
+    // fs.writeFileSync('gd_block_topic_slot_data.json', JSON.stringify(json_gd_block_topic_slot_data));
 
     json_gd_skin_list = json_gd_skin_list[5][0][2]; // 提取有用的
     let new_json_gd_skin_list = json_gd_skin_list.filter((item) => item.platform === 1); 
@@ -79,14 +84,14 @@ const update_skin= async() =>{
    */
 
     var skin_last_idx = 0; // 用来计算话题起点
-    var diff = 678; // 常规皮肤起点
+    var diff = 691; // 常规皮肤起点 可以通过过滤json_gd_language中羊了个羊字样的第二个来定位diff的值
 
     // 日常皮肤
     for(let i of new_json_gd_skin_list){
         if(i.spSkin.split('_').length === 2){ // 
             if(parseInt(i.spSkin.split('_')[1] )>=80)  // 80 那里跳过4个
-                diff = 682;
-            else diff = 678;
+                diff = 695; // 682
+            else diff = 691; // 678
             let skin_idx = diff + parseInt(i.spSkin.split('_')[1]);
             skin_last_idx = skin_idx;
             i.name = json_gd_language[5][0][2][skin_idx]['zh'];
@@ -138,13 +143,13 @@ const update_skin= async() =>{
         world_open_topic_list.push(i.rightId);
     }
     console.log(world_open_topic_list);
-    // for(let i of new_json_gd_block_topic_slot_data){
-    //     // let cur_topic = new_json_gd_block_topic_slot_data.filter(item => item.topicType == i.topicId)[0];
-    //     console.log(i);
-    //     // i.topicName = cur_topic.topicName;
-    //     // i.lastblockId = cur_topic.blockId;
-    // }
-    // console.log(JSON.stringify(new_json_gd_game_topic_list));
+    for(let i of new_json_gd_block_topic_slot_data){
+        // let cur_topic = new_json_gd_block_topic_slot_data.filter(item => item.topicType == i.topicId)[0];
+        console.log(i);
+        // i.topicName = cur_topic.topicName;
+        // i.lastblockId = cur_topic.blockId;
+    }
+    console.log(JSON.stringify(new_json_gd_game_topic_list));
 
 }
 update_skin();
